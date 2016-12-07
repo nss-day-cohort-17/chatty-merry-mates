@@ -18,8 +18,30 @@ document.querySelector("body").addEventListener("click", function(event) {
   }
 });
 
+var JSONRequest = new XMLHttpRequest()
+JSONRequest.addEventListener("load", loadInitialMessages)
+JSONRequest.open("GET", "messages.json")
+JSONRequest.send()
+
+
 
 // What input does this function need?
 var deleteMessage = function() {
   console.log("The delete button was pressed")
+}
+
+
+// Function to load initial messages from JSON file
+// Generates list items to add to UL element already in HTML
+function loadInitialMessages(loadEvt) {
+  var data = JSON.parse(loadEvt.target.responseText)
+  var HTMLString = ""
+  for(var i = 0; i < data.messages.length; i++) {
+    HTMLString +=
+    `
+    <li>${data.messages[i].message}<button class="btn btn-default delete-btn">Delete</button></li>
+    `
+  }
+  document.getElementById('messages-list').innerHTML = HTMLString
+  console.log("Initial messages were loaded")
 }
