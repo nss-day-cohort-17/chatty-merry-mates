@@ -27,7 +27,7 @@ JSONRequest.send()
 
 
 // What input does this function need?
-var deleteMessage = function() {
+function deleteMessage() {
   console.log("The delete button was pressed")
 }
 
@@ -46,3 +46,43 @@ function loadInitialMessages(loadEvt) {
   document.getElementById('messages-list').innerHTML = HTMLString
   console.log("Initial messages were loaded")
 }
+
+// Clear messages
+function clearMessages() {
+  console.log("The clear message button was pressed")
+}
+
+// Change attribute of div element upon user selection of theme checkbox
+// Executed when checkbox for dark theme is pressed
+// Changes class attribute of div#theme to class="dark-theme" or class="light-theme"
+function changeTheme () {
+
+}
+
+// Change the classList for theme div element
+function enlargeText() {
+
+}
+
+// adds attribute disabled="disabled" to button
+function disableClearButton() {
+
+}
+
+// Executes when enter button is pressed in text field
+// Takes text and creates new list item with that text
+function addMessage(clickEvt) {
+
+}
+
+// //This is how you add and remove class names
+// document.getElementById('theme').classList.add("Leroy-Jenkins")
+// document.getElementById('theme').classList.remove("light-theme")
+
+
+
+
+
+
+
+
