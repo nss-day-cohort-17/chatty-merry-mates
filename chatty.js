@@ -1,36 +1,6 @@
 /////////////////////////////
-////     Objectives     /////
+/////  Functions        /////
 /////////////////////////////
-
-
-// Adding event listener to body as per helpful hint
-// Listening to dynamically created elements
-document.querySelector("body").addEventListener("click", function(event) {
-  console.log(event);
-
-  // Handle the click event on any DOM element with a certain class
-  // Any element with the class "delete-btn" in its class list will call
-  // function delete message
-  for (var i = 0; i < event.target.classList.length; i++) {
-    if (event.target.classList[i] === "delete-btn") {
-      deleteMessage();
-    }
-  }
-});
-
-// Wait for JSON file to load, then load messages into HTML
-var JSONRequest = new XMLHttpRequest()
-JSONRequest.addEventListener("load", loadInitialMessages)
-JSONRequest.open("GET", "messages.json")
-JSONRequest.send()
-
-
-
-// What input does this function need?
-function deleteMessage() {
-  console.log("The delete button was pressed")
-}
-
 
 // Function to load initial messages from JSON file
 // Generates list items to add to UL element already in HTML
@@ -47,9 +17,32 @@ function loadInitialMessages(loadEvt) {
   console.log("Initial messages were loaded")
 }
 
+// What input does this function need?
+function deleteMessage(clickEvt) {
+  console.log("The delete button was pressed")
+  console.log(clickEvt.target.parentNode)
+}
+
+
 // Clear messages
-function clearMessages() {
+function clearAllMessages() {
   console.log("The clear message button was pressed")
+}
+
+// adds attribute disabled="disabled" to button
+// When there are no list items
+function disableClearButton() {
+
+}
+
+// Executes when enter button is pressed in text field
+// Takes text and creates new list item with that text
+function addMessage(keyEvt) {
+  if (keyEvt.key === "Enter") {
+    console.log("Enter was pressed")
+    document.getElementById('messages-list').innerHTML +=
+    `<li>${keyEvt.target.value}<button class="btn btn-default delete-btn">Delete</button></li>`
+  }
 }
 
 // Change attribute of div element upon user selection of theme checkbox
@@ -64,22 +57,42 @@ function enlargeText() {
 
 }
 
-// adds attribute disabled="disabled" to button
-function disableClearButton() {
-
-}
-
-// Executes when enter button is pressed in text field
-// Takes text and creates new list item with that text
-function addMessage(clickEvt) {
-
-}
-
-// //This is how you add and remove class names
-// document.getElementById('theme').classList.add("Leroy-Jenkins")
-// document.getElementById('theme').classList.remove("light-theme")
 
 
+/////////////////////////////
+/////  Event Listeners  /////
+/////////////////////////////
+
+// Wait for JSON file to load, then load messages into HTML
+var JSONRequest = new XMLHttpRequest()
+JSONRequest.addEventListener("load", loadInitialMessages)
+JSONRequest.open("GET", "messages.json")
+JSONRequest.send()
+
+// Adding event listener to body as per helpful hint
+// Listening to dynamically created elements
+document.querySelector("body").addEventListener("click", function(event) {
+  console.log(event);
+
+  // Handle the click event on any DOM element with a certain class
+  // Any element with the class "delete-btn" in its class list will call
+  // function delete message
+  for (var i = 0; i < event.target.classList.length; i++) {
+    if (event.target.classList[i] === "delete-btn") {
+      deleteMessage();
+    }
+  }
+});
+
+document.getElementById('inputMessage').addEventListener('keypress', addMessage)
+
+
+
+
+// //This is how you toggle
+// function toggleClass() {
+//   document.getElementById('theme').classList.toggle("Leroy-Jenkins")
+// }
 
 
 
