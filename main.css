@@ -9,6 +9,7 @@ max-width: 1000px;
  margin-left: 5em;
  margin-right: 2em;
  border-radius: 5px;
+ color: #ecf0f1;
 }
 #darkThemeCheckbox,
 #largeTextCheckbox {
@@ -30,8 +31,9 @@ width:100%;
 border: ridge 5px;
 border-radius: 3px;
 border-color: #e74c3c;
-min-height:
+min-height: 500px;
 }
+/*javascript*/
 .dark-theme {
 background-color: #bdc3c7;
 color: #ecf0f1;
