@@ -1,19 +1,18 @@
 /*searchbar*/
-.form-control {
-    min-width: 775px;
-    width: 100%;
+.form-group {
+    width: 80%;
 }
 /*checkbox*/
 .darkTheme {
  background-color: black;
- margin-left: 1em;
+ margin-left: 5em;
  margin-right: 2em;
 }
 #cbox {
  margin-right: 1em;
 }
 /*logo*/
-.navbar-brand {
-height: 152px;
-width: 50px;
+#logo {
+height: 20%;
+width: 20%;
 }
