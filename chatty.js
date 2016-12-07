@@ -18,6 +18,7 @@ document.querySelector("body").addEventListener("click", function(event) {
   }
 });
 
+// Wait for JSON file to load, then load messages into HTML
 var JSONRequest = new XMLHttpRequest()
 JSONRequest.addEventListener("load", loadInitialMessages)
 JSONRequest.open("GET", "messages.json")
