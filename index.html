@@ -11,7 +11,12 @@
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <div id=container>
+  <!-- Default is Light theme.  JS can change to class = "dark-theme" -->
+  <div class="light-theme">
+
+    <!-- Navbar -->
+
+    <div class="container">
         <nav class="navbar navbar-default">
          <div class="container-fluid">
            <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,6 +36,19 @@
          </div><!-- /.container-fluid -->
         </nav>
     </div>
+
+
+
+    <!-- Messages -->
+    <!-- In CSS - remove the bullet points in list -->
+    <!-- In CSS - Add margin to left of buttons -->
+    <div class="container messages-div">
+      <h3>Messages:</h3>
+      <ul class="messages-list">
+        <li>This is a sample message<button class="btn btn-default delete-btn">Delete</button></li>
+      </ul>
+    </div>
+  </div>
 
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery.js"></script>
