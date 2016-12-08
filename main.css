@@ -22,7 +22,9 @@ ul {
 }
 h2 {
     text-shadow: 1px 1px 0 black,
-             2px 2px 0 black;
+                 2px 2px 0 black;
+    font-family: Papyrus, fantasy !important;
+    color: #e74c3c;
 }
 .newMessage {
   width: 50%;
@@ -55,6 +57,9 @@ max-width: 1000px;
     float: left;
     border-radius: 5px;
 }
+#inputMessage {
+    color: black !important;
+}
 
 /*pretty...ish body*/
 body {
@@ -64,12 +69,12 @@ font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 font-size: 18px;
 background: #F5F5F5;
 border: 15px solid rgba(0, 0, 0, 0.3);
-border-radius: 5px;
-margin-top: 5.7em;
+/*border-radius: 1px;*/
+margin-top: 6.5em;
 }
 #messages-list {
 padding-top: 1.5em;
-line-height: 2.5em;
+line-height: 3em;
 border: ridge 3px;
 border-radius: 3px;
 border-color: #34495e;
@@ -81,7 +86,7 @@ border-radius: 3em;
 height: 2em;
 text-align: center;
 box-shadow: 10px 5px 5px #7f8c8d;
-background-color: #FFD600;
+background-color: #D50000;
 color: white;
  }
  #clearButton {
@@ -89,10 +94,14 @@ color: white;
     border-radius: 11px !important;
     color: white;
  }
+ /*edit button*/
+ .edit-btn {
+    background-color: #2980b9;
+ }
 /*javascript*/
 .dark-theme {
 background-color: #616161;
-color: #ecf0f1;
+color: white;
 }
 
 .large-text {
