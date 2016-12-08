@@ -1,3 +1,35 @@
+nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    width: 100%;
+    background-color: #bdc3c7;
+    padding: 1em;
+    border: 2px solid black;
+    align-items: center;
+    justify-content: space-around;
+}
+.checkboxColumn {
+    display: flex;
+    flex-direction: column;
+}
+body {
+    margin-top: 10em;
+}
+.newMessage {
+  width: 50%;
+  height: 3em;
+}
+img {
+  width: 20%;
+}
+.btn {
+  height: 3em;
+}
+
 /*searchbar*/
 .form-group {
 width: 80%;
@@ -6,15 +38,13 @@ max-width: 1000px;
 /*checkbox*/
 .darkTheme {
  background-color: #95a5a6;
- margin-left: 5em;
- margin-right: 2em;
  border-radius: 5px;
  color: #ecf0f1;
  box-shadow: 10px 5px 5px black;
 }
 #darkThemeCheckbox,
 #largeTextCheckbox {
- margin-right: 1em;
+ margin: 0 1em;
 }
 /*logo*/
 #logo {
