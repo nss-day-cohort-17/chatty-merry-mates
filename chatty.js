@@ -130,8 +130,6 @@ function addMessage(keyEvt) {
     }
   var ul = document.getElementById('messages-list')
   // If no more messages, disable clear messages button
-  console.dir(ul.childElementCount)
-  console.dir(ul.firstChild)
   if(ul.childElementCount > 20) {
     ul.firstChild.remove();
   }
