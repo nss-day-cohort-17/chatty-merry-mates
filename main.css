@@ -11,14 +11,18 @@ nav {
     border: 2px solid black;
     align-items: center;
     justify-content: space-around;
+    box-shadow: 10px 5px 5px #7f8c8d;
 }
 .checkboxColumn {
     display: flex;
     flex-direction: column;
 }
-
 ul {
     list-style: none;
+h2{
+    text-shadow: 1px 1px 0 black,
+             2px 2px 0 black;
+
 }
 .newMessage {
   width: 50%;
@@ -54,32 +58,31 @@ max-width: 1000px;
 
 /*pretty...ish body*/
 body {
-    height:100%;
-    width:100%;
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-    font-size: 1.6em;
-    background: #F5F5F5;
-    border: 15px solid rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    margin-top: 5.7em;
-}
-
+height:100%;
+width:100%;
+font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+font-size: 18px;
+background: #F5F5F5;
+border: 15px solid rgba(0, 0, 0, 0.3);
+border-radius: 5px;
+margin-top: 5.7em;
 }
 #messages-list {
-    border: ridge 3px;
-    border-radius: 3px;
-    border-color: #34495e;
-    min-height: 500px;
+padding-top: 1.5em;
+line-height: 2.5em;
+border: ridge 3px;
+border-radius: 3px;
+border-color: #34495e;
+min-height: 500px;
 }
 /*delete buttons in message field*/
 .btn {
-    border-radius: 1em;
-    text-align: center;
-    margin-left: 1em;
-    height: 1.8em;
-    box-shadow: 10px 5px 5px #7f8c8d;
-    background-color: #FFB300;
-    color: white;
+border-radius: 3em;
+height: 2em;
+text-align: center;
+box-shadow: 10px 5px 5px #7f8c8d;
+background-color: #FFD600;
+color: white;
  }
  #clearButton {
     background-color: #D50000;
@@ -88,7 +91,7 @@ body {
  }
 /*javascript*/
 .dark-theme {
-background-color: #bdc3c7;
+background-color: #616161;
 color: #ecf0f1;
 }
 
