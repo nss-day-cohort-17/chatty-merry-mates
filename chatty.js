@@ -58,12 +58,14 @@ function enableClearMessagesButton() {
 // Takes text and creates new list item with that text
 function addMessage(keyEvt) {
   if (keyEvt.key === "Enter") {
-    console.log("Enter was pressed")
-    document.getElementById('messages-list').innerHTML +=
-    `<li>${keyEvt.target.value}<button class="btn btn-default delete-btn">Delete</button></li>`
-    // Clear input field
-    document.getElementById('inputMessage').value = ""
-    enableClearMessagesButton();
+  console.log("Enter was pressed")
+    if(document.getElementById('inputMessage').value != "") {
+      document.getElementById('messages-list').innerHTML +=
+      `<li>${keyEvt.target.value}<button class="btn btn-default delete-btn">Delete</button></li>`
+      // Clear input field
+      document.getElementById('inputMessage').value = ""
+      enableClearMessagesButton();
+    }
   }
 }
 
