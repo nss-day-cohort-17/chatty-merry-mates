@@ -2,6 +2,31 @@
 /////  Functions        /////
 /////////////////////////////
 
+
+/////////////////////////////
+/////  How Edit Works   /////
+/////////////////////////////
+
+// upon click of edit button, beginEditProcess fires
+  // Global boolean stores if we are in edit mode or not
+  // Function saves id of message it came from
+  // When enter is pressed, check to see if we are in edit mode
+    // Function whenEnterIsPressed
+      // If we are in edit mode, edit message and change global boolean
+      // If not in edit mode, add message
+  // What happens when they delete the entire message?
+  // What happens if they want to exit edit mode?
+
+// additional: display message that we are in edit mode?
+// addiitonal: highlight message that is being edited?
+
+
+
+var messageIdCounter = 1;
+var editMessageId;
+// Keeps track of if we're in edit mode or not
+var editMode = false;
+
 // Function to load initial messages from JSON file
 // Generates list items to add to UL element already in HTML
 function loadInitialMessages(loadEvt) {
@@ -10,16 +35,18 @@ function loadInitialMessages(loadEvt) {
   for(var i = 0; i < data.messages.length; i++) {
     HTMLString +=
     `
-    <li>${data.messages[i].message}<button class="btn btn-default delete-btn">Delete</button></li>
+    <li id="${messageIdCounter}"><span>${data.messages[i].message}</span>
+    <input type="button" value ="Edit" class="btn edit-btn"></input>
+    <input type="button" value ="Delete" class="btn delete-btn"></input>
+    </li>
     `
+    messageIdCounter = messageIdCounter + 1
   }
   document.getElementById('messages-list').innerHTML = HTMLString
-  console.log("Initial messages were loaded")
 }
 
 // Executed on click of element with class 'delete-btn'
 function deleteMessage(clickEvt) {
-  console.log("The delete button was pressed")
   // li is parent element of delete button
   var li = clickEvt.target.parentElement
   li.remove()
@@ -30,11 +57,18 @@ function deleteMessage(clickEvt) {
   }
 }
 
+// Executed on click of element with class 'edit-btn'
+function beginEditProcess(clickEvt) {
+  var messageContent = clickEvt.target.parentElement.firstChild.innerText
+  editMessageId = clickEvt.target.parentElement.id
+  editMode = true;
+  document.getElementById('inputMessage').value = messageContent
+}
+
 
 // Clear messages
 function clearAllMessages() {
   // This function should disable the button upon executing
-  console.log("The clear message button was pressed")
   var ul = document.getElementById('messages-list')
   ul.innerHTML = ""
   disableClearMessagesButton()
@@ -43,30 +77,50 @@ function clearAllMessages() {
 // adds attribute disabled="true" to button
 // When there are no list items
 function disableClearMessagesButton() {
-  console.log("Clear Messages Button disabled")
   document.getElementById('clearButton').setAttribute("disabled", true)
 }
 
 // removes attribute disabled when executed
 // no error if disabled attribute does not exist
 function enableClearMessagesButton() {
-  console.log("Clear Messages Button enabled")
   document.getElementById('clearButton').removeAttribute("disabled")
 }
 
 // Executes when enter button is pressed in text field
 // Takes text and creates new list item with that text
-function addMessage(keyEvt) {
+function whenEnterIsPressed(keyEvt) {
   if (keyEvt.key === "Enter") {
-  console.log("Enter was pressed")
-    if(document.getElementById('inputMessage').value != "") {
+    if(editMode === true) {
+      editMessage(keyEvt)
+
+    }
+    else {
+      addMessage(keyEvt)
+    }
+  }
+}
+
+function addMessage(keyEvt) {
+  if(document.getElementById('inputMessage').value != "") {
       document.getElementById('messages-list').innerHTML +=
-      `<li>${keyEvt.target.value}<button class="btn btn-default delete-btn">Delete</button></li>`
+      `
+      <li id="${messageIdCounter}"><span>${keyEvt.target.value}</span>
+      <input type="button" value ="Edit" class="btn edit-btn"></input>
+      <input type="button" value ="Delete" class="btn delete-btn"></input>
+      </li>
+      `
+      messageIdCounter = messageIdCounter + 1
       // Clear input field
       document.getElementById('inputMessage').value = ""
       enableClearMessagesButton();
     }
-  }
+}
+
+function editMessage(keyEvt) {
+  var li = document.getElementById(editMessageId)
+  li.firstChild.textContent = keyEvt.target.value
+  document.getElementById('inputMessage').value = ""
+  editMode = false;
 }
 
 // Change attribute of div element upon user selection of theme checkbox
@@ -96,7 +150,6 @@ JSONRequest.send()
 // Adding event listener to body as per helpful hint
 // Listening to dynamically created elements
 document.querySelector("body").addEventListener("click", function(event) {
-  // console.log(event);
 
   // Handle the click event on any DOM element with a certain class
   // Any element with the class "delete-btn" in its class list will call
@@ -104,10 +157,15 @@ document.querySelector("body").addEventListener("click", function(event) {
   if (event.target.classList.contains("delete-btn")) {
     deleteMessage(event);
   }
+
+  if (event.target.classList.contains("edit-btn")) {
+    beginEditProcess(event);
+  }
+
 });
 
 
-document.getElementById('inputMessage').addEventListener('keypress', addMessage)
+document.getElementById('inputMessage').addEventListener('keypress', whenEnterIsPressed)
 document.getElementById('clearButton').addEventListener('click', clearAllMessages)
 document.getElementById('darkThemeCheckbox').addEventListener('click', toggleTheme)
 document.getElementById('largeTextCheckbox').addEventListener('click', toggleEnlargeText)
