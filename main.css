@@ -29,7 +29,7 @@ height:100%;
 width:100%;
 font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 font-size: 18px;
-background: white;
+background: #F5F5F5;
 border: 15px solid rgba(0, 0, 0, 0.3);
 border-radius: 5px;
 }
@@ -44,10 +44,13 @@ min-height: 500px;
 border-radius: 50px;
 height: 30px;
 box-shadow: 10px 5px 5px #7f8c8d;
+background-color: #FFB300;
+color: white;
  }
  #clearButton {
-    background-color: #e74c3c;
+    background-color: #D50000;
     border-radius: 11px !important;
+    color: white;
  }
 /*javascript*/
 .dark-theme {
