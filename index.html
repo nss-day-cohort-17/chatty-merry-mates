@@ -10,32 +10,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
-<body>
+<body id="theme">
   <!-- can add class="dark-theme" or "large-text" -->
-  <div id="theme">
-    <!-- Navbar -->
-    <div class="container">
-        <nav class="navbar navbar-default">
-         <div class="container-fluid">
-           <!-- Brand and toggle get grouped for better mobile display -->
-           <div class="navbar-header">
-             <a class="navbar-left" href="#"></a>
-           </div>
-            <div class="col-md-8"><img id="logo" src="http://www.merrymates.se/userfiles/bilder/MerryMates%20Sabbe.jpg"></div>
-           <!-- Collect the nav links, forms, and other content for toggling -->
-           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <div class="navbar-form navbar-center">
-                   <div class="form-group">
-                     <input id="inputMessage" type="text" class="form-control" placeholder="Message">
-                   </div>
-                   <button id="clearButton" class="btn btn-default">Clear message board</button>
-              </div>
-                <label class="darkTheme"><input type="checkbox" id="darkThemeCheckbox" value="first_checkbox">dark theme</label>
-                <label class="largeText"><input type="checkbox" id="largeTextCheckbox" value="second_checkbox">large text</label>
-           </div>
-         </div>
-        </nav>
-    </div>
+    <!-- better navbar -->
+    <nav>
+        <h2>Merry Mates!</h2>
+        <input id="inputMessage" class="newMessage" type="text" placeholder="new message">
+        <button id="clearButton" class="btn btn-default">Clear message board</button>
+      </div>
+      <div class="checkboxColumn">
+        <label class="darkTheme"><input type="checkbox" id="darkThemeCheckbox" value="first_checkbox">dark theme</label>
+        <label class="largeText"><input type="checkbox" id="largeTextCheckbox" value="second_checkbox">large text</label>
+    </nav>
     <!-- Messages -->
     <!-- In CSS - remove the bullet points in list -->
     <!-- In CSS - Add margin to left of buttons -->
