@@ -41,13 +41,15 @@ function clearAllMessages() {
   disableClearMessagesButton()
 }
 
-// adds attribute disabled="disabled" to button
+// adds attribute disabled="true" to button
 // When there are no list items
 function disableClearMessagesButton() {
   console.log("Clear Messages Button disabled")
   document.getElementById('clearButton').setAttribute("disabled", true)
 }
 
+// removes attribute disabled when executed
+// no error if disabled attribute does not exist
 function enableClearMessagesButton() {
   console.log("Clear Messages Button enabled")
   document.getElementById('clearButton').removeAttribute("disabled")
@@ -69,13 +71,13 @@ function addMessage(keyEvt) {
 // Change attribute of div element upon user selection of theme checkbox
 // Executed when checkbox for dark theme is pressed
 // Changes class attribute of div#theme to class="dark-theme" or class="light-theme"
-function changeTheme () {
-
+function toggleTheme () {
+  document.getElementById('theme').classList.toggle("dark-theme")
 }
 
 // Change the classList for theme div element
-function enlargeText() {
-
+function toggleEnlargeText() {
+  document.getElementById('theme').classList.toggle("large-text")
 }
 
 
@@ -105,18 +107,14 @@ document.querySelector("body").addEventListener("click", function(event) {
   }
 });
 
-// Listens for keypress on text input field
+
 document.getElementById('inputMessage').addEventListener('keypress', addMessage)
-// Listens for clear messages button press
 document.getElementById('clearButton').addEventListener('click', clearAllMessages)
+document.getElementById('darkThemeCheckbox').addEventListener('click', toggleTheme)
+document.getElementById('largeTextCheckbox').addEventListener('click', toggleEnlargeText)
 
 
 
-
-// //This is how you toggle
-// function toggleClass() {
-//   document.getElementById('theme').classList.toggle("Leroy-Jenkins")
-// }
 
 
 
