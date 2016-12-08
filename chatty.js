@@ -38,16 +38,19 @@ function clearAllMessages() {
   console.log("The clear message button was pressed")
   var ul = document.getElementById('messages-list')
   ul.innerHTML = ""
+  disableClearMessagesButton()
 }
 
 // adds attribute disabled="disabled" to button
 // When there are no list items
 function disableClearMessagesButton() {
   console.log("Clear Messages Button disabled")
+  document.getElementById('clearButton').setAttribute("disabled", true)
 }
 
 function enableClearMessagesButton() {
   console.log("Clear Messages Button enabled")
+  document.getElementById('clearButton').removeAttribute("disabled")
 }
 
 // Executes when enter button is pressed in text field
@@ -59,6 +62,7 @@ function addMessage(keyEvt) {
     `<li>${keyEvt.target.value}<button class="btn btn-default delete-btn">Delete</button></li>`
     // Clear input field
     document.getElementById('inputMessage').value = ""
+    enableClearMessagesButton();
   }
 }
 
