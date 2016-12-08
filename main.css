@@ -1,3 +1,7 @@
+.editing {
+    color: #81C784;
+}
+
 nav {
     display: flex;
     position: fixed;
@@ -43,6 +47,7 @@ max-width: 1000px;
  border-radius: 5px;
  color: #ecf0f1;
  box-shadow: 10px 5px 5px black;
+    padding-right: 0.5em;
 }
 #darkThemeCheckbox,
 #largeTextCheckbox {
@@ -83,6 +88,7 @@ text-align: center;
 box-shadow: 10px 5px 5px #7f8c8d;
 background-color: #FFD600;
 color: white;
+padding: 0 1em;
  }
  #clearButton {
     background-color: #D50000;
