@@ -18,7 +18,6 @@ function loadInitialMessages(loadEvt) {
 }
 
 // Executed on click of element with class 'delete-btn'
-var clickEvent
 function deleteMessage(clickEvt) {
   console.log("The delete button was pressed")
   var li = clickEvt.target.parentElement
