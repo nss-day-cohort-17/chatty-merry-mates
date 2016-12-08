@@ -10,7 +10,10 @@ function loadInitialMessages(loadEvt) {
   for(var i = 0; i < data.messages.length; i++) {
     HTMLString +=
     `
-    <li>${data.messages[i].message}<button class="btn btn-default delete-btn">Delete</button></li>
+    <li>${data.messages[i].message}
+    <input type="button" value ="Edit" class="btn btn-default edit-btn"></input>
+    <input type="button" value ="Delete" class="btn btn-default delete-btn"></input>
+    </li>
     `
   }
   document.getElementById('messages-list').innerHTML = HTMLString
@@ -28,6 +31,14 @@ function deleteMessage(clickEvt) {
   if(ul.childElementCount === 0) {
     disableClearMessagesButton()
   }
+}
+
+// Executed on click of element with class 'edit-btn'
+function editMessage(clickEvt) {
+  console.log("Edit Button was pressed")
+  console.dir(clickEvt.target.parentElement)
+  var messageContent = clickEvt.target.parentElement.textContent
+  document.getElementById('inputMessage').value = messageContent
 }
 
 
@@ -61,7 +72,10 @@ function addMessage(keyEvt) {
   console.log("Enter was pressed")
     if(document.getElementById('inputMessage').value != "") {
       document.getElementById('messages-list').innerHTML +=
-      `<li>${keyEvt.target.value}<button class="btn btn-default delete-btn">Delete</button></li>`
+      `<li>${keyEvt.target.value}
+      <input type="button" value ="Edit" class="btn btn-default edit-btn"></input>
+      <input type="button" value ="Delete" class="btn btn-default delete-btn"></input>
+      </li>`
       // Clear input field
       document.getElementById('inputMessage').value = ""
       enableClearMessagesButton();
@@ -104,6 +118,11 @@ document.querySelector("body").addEventListener("click", function(event) {
   if (event.target.classList.contains("delete-btn")) {
     deleteMessage(event);
   }
+
+  if (event.target.classList.contains("edit-btn")) {
+    editMessage(event);
+  }
+
 });
 
 
