@@ -136,6 +136,7 @@ function editMessage(keyEvt) {
   li.firstChild.textContent = keyEvt.target.value
   document.getElementById('inputMessage').value = ""
   editMode = false;
+  removeEditingLabels()
 }
 
 // Change attribute of div element upon user selection of theme checkbox
