@@ -99,10 +99,8 @@ document.querySelector("body").addEventListener("click", function(event) {
   // Handle the click event on any DOM element with a certain class
   // Any element with the class "delete-btn" in its class list will call
   // function delete message
-  for (var i = 0; i < event.target.classList.length; i++) {
-    if (event.target.classList[i] === "delete-btn") {
-      deleteMessage(event);
-    }
+  if (event.target.classList.contains("delete-btn")) {
+    deleteMessage(event);
   }
 });
 
