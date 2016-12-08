@@ -47,6 +47,12 @@ function loadInitialMessages(loadEvt) {
 function deleteMessage(clickEvt) {
   // li is parent element of delete button
   var li = clickEvt.target.parentElement
+  // If ID of message being deleted = editmessage id
+  if(li.id === editMessageId) {
+    editMode = false;
+    document.getElementById('inputMessage').value = ""
+  }
+
   li.remove()
   var ul = document.getElementById('messages-list')
   // If no more messages, disable clear messages button
@@ -132,11 +138,13 @@ function addMessage(keyEvt) {
 }
 
 function editMessage(keyEvt) {
-  var li = document.getElementById(editMessageId)
-  li.firstChild.textContent = keyEvt.target.value
-  document.getElementById('inputMessage').value = ""
-  editMode = false;
-  removeEditingLabels()
+  if(document.getElementById('inputMessage').value != "") {
+    var li = document.getElementById(editMessageId)
+    li.firstChild.textContent = keyEvt.target.value
+    document.getElementById('inputMessage').value = ""
+    editMode = false;
+    removeEditingLabels()
+  }
 }
 
 // Change attribute of div element upon user selection of theme checkbox
