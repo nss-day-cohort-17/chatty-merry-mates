@@ -40,7 +40,7 @@ function loadInitialMessages(loadEvt) {
     <input type="button" value ="Delete" class="btn delete-btn"></input>
     </li>
     `
-    messageIdCounter = messageIdCounter + 1
+    messageIdCounter += 1
   }
   document.getElementById('messages-list').innerHTML = HTMLString
 }
