@@ -34,9 +34,6 @@ h2 {
   width: 50%;
   height: 3em;
 }
-img {
-  width: 20%;
-}
 
 /*searchbar*/
 .form-group {
@@ -73,8 +70,6 @@ width:100%;
 font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 font-size: 18px;
 background: #F5F5F5;
-border: 15px solid rgba(0, 0, 0, 0.3);
-/*border-radius: 1px;*/
 margin-top: 6.5em;
 }
 #messages-list {
