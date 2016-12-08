@@ -117,5 +117,3 @@ document.getElementById('clearButton').addEventListener('click', clearAllMessage
 
 
 
-
-
