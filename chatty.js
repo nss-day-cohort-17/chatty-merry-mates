@@ -10,7 +10,7 @@ function loadInitialMessages(loadEvt) {
   for(var i = 0; i < data.messages.length; i++) {
     HTMLString +=
     `
-    <li>${data.messages[i].message}
+    <li><span>${data.messages[i].message}</span>
     <input type="button" value ="Edit" class="btn btn-default edit-btn"></input>
     <input type="button" value ="Delete" class="btn btn-default delete-btn"></input>
     </li>
@@ -36,8 +36,7 @@ function deleteMessage(clickEvt) {
 // Executed on click of element with class 'edit-btn'
 function editMessage(clickEvt) {
   console.log("Edit Button was pressed")
-  console.dir(clickEvt.target.parentElement)
-  var messageContent = clickEvt.target.parentElement.textContent
+  var messageContent = clickEvt.target.parentElement.firstChild.innerText
   document.getElementById('inputMessage').value = messageContent
 }
 
@@ -72,10 +71,12 @@ function addMessage(keyEvt) {
   console.log("Enter was pressed")
     if(document.getElementById('inputMessage').value != "") {
       document.getElementById('messages-list').innerHTML +=
-      `<li>${keyEvt.target.value}
+      `
+      <li><span>${keyEvt.target.value}</span>
       <input type="button" value ="Edit" class="btn btn-default edit-btn"></input>
       <input type="button" value ="Delete" class="btn btn-default delete-btn"></input>
-      </li>`
+      </li>
+      `
       // Clear input field
       document.getElementById('inputMessage').value = ""
       enableClearMessagesButton();
