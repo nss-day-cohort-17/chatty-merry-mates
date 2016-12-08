@@ -20,9 +20,9 @@ function loadInitialMessages(loadEvt) {
 // Executed on click of element with class 'delete-btn'
 function deleteMessage(clickEvt) {
   console.log("The delete button was pressed")
+  // li is parent element of delete button
   var li = clickEvt.target.parentElement
-  li.remove() // removes li that contained delete button
-
+  li.remove()
   var ul = document.getElementById('messages-list')
   // If no more messages, disable clear messages button
   if(ul.childElementCount === 0) {
