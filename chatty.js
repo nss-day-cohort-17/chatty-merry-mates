@@ -22,7 +22,7 @@
 
 
 
-var messageIdCounter = 1;
+var messageIdCounter = 0;
 var editMessageId;
 // Keeps track of if we're in edit mode or not
 var editMode = false;
@@ -34,13 +34,11 @@ function loadInitialMessages(loadEvt) {
   var HTMLString = ""
   for(var i = 0; i < data.messages.length; i++) {
     HTMLString +=
-    `
-    <li id="${messageIdCounter}"><span>${data.messages[i].message}</span>
+    `<li id="${messageIdCounter}"><span>${data.messages[i].message}</span>
     <input type="button" value ="Edit" class="btn edit-btn"></input>
     <input type="button" value ="Delete" class="btn delete-btn"></input>
-    </li>
-    `
-    messageIdCounter = messageIdCounter + 1
+    </li>`
+    messageIdCounter += 1
   }
   document.getElementById('messages-list').innerHTML = HTMLString
 }
@@ -49,6 +47,12 @@ function loadInitialMessages(loadEvt) {
 function deleteMessage(clickEvt) {
   // li is parent element of delete button
   var li = clickEvt.target.parentElement
+  // If ID of message being deleted = editmessage id
+  if(li.id === editMessageId) {
+    editMode = false;
+    document.getElementById('inputMessage').value = ""
+  }
+
   li.remove()
   var ul = document.getElementById('messages-list')
   // If no more messages, disable clear messages button
@@ -59,10 +63,22 @@ function deleteMessage(clickEvt) {
 
 // Executed on click of element with class 'edit-btn'
 function beginEditProcess(clickEvt) {
-  var messageContent = clickEvt.target.parentElement.firstChild.innerText
-  editMessageId = clickEvt.target.parentElement.id
+  var li = clickEvt.target.parentElement
+  var span = li.firstChild
+  var messageContent = span.innerText
+  editMessageId = li.id
   editMode = true;
   document.getElementById('inputMessage').value = messageContent
+  removeEditingLabels()
+  span.classList.add("editing")
+}
+
+// Remove class='editing' from all spans
+function removeEditingLabels() {
+  var ul = document.getElementById('messages-list')
+  for (var i = 0; i < ul.childElementCount; i++) {
+    ul.childNodes[i].firstChild.classList.remove("editing")
+  }
 }
 
 
@@ -103,24 +119,32 @@ function whenEnterIsPressed(keyEvt) {
 function addMessage(keyEvt) {
   if(document.getElementById('inputMessage').value != "") {
       document.getElementById('messages-list').innerHTML +=
-      `
-      <li id="${messageIdCounter}"><span>${keyEvt.target.value}</span>
+      `<li id="${messageIdCounter}"><span>${keyEvt.target.value}</span>
       <input type="button" value ="Edit" class="btn edit-btn"></input>
       <input type="button" value ="Delete" class="btn delete-btn"></input>
-      </li>
-      `
+      </li>`
       messageIdCounter = messageIdCounter + 1
       // Clear input field
       document.getElementById('inputMessage').value = ""
       enableClearMessagesButton();
     }
+  var ul = document.getElementById('messages-list')
+  // If no more messages, disable clear messages button
+  console.dir(ul.childElementCount)
+  console.dir(ul.firstChild)
+  if(ul.childElementCount > 20) {
+    ul.firstChild.remove();
+  }
 }
 
 function editMessage(keyEvt) {
-  var li = document.getElementById(editMessageId)
-  li.firstChild.textContent = keyEvt.target.value
-  document.getElementById('inputMessage').value = ""
-  editMode = false;
+  if(document.getElementById('inputMessage').value != "") {
+    var li = document.getElementById(editMessageId)
+    li.firstChild.textContent = keyEvt.target.value
+    document.getElementById('inputMessage').value = ""
+    editMode = false;
+    removeEditingLabels()
+  }
 }
 
 // Change attribute of div element upon user selection of theme checkbox
