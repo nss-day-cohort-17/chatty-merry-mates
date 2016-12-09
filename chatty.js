@@ -85,6 +85,7 @@ function removeEditingLabels() {
 // Clear messages
 function clearAllMessages() {
   // This function should disable the button upon executing
+  editMode = false;
   var ul = document.getElementById('messages-list')
   ul.innerHTML = ""
   disableClearMessagesButton()
